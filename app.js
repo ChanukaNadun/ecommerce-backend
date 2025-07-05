@@ -1,13 +1,15 @@
+const dotenv = require("dotenv");
 const express = require("express");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+
 const cors = require("cors");
 
 // Load environment variables
 dotenv.config();
 
 // Connect to DB
-require("./config/db");
+const connectDB = require("./config/db");
+connectDB(); 
 
 // Initialize app
 const app = express();

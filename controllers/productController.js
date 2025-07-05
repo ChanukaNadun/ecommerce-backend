@@ -71,14 +71,14 @@ exports.updateProduct = async (req, res) => {
 // @access  Private/Admin
 exports.deleteProduct = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+
+    const product = await Product.findByIdAndDelete(req.params.id);
 
     if (!product) {
       return res.status(404).json({ msg: "Product not found" });
     }
 
-    await product.remove();
-    res.json({ msg: "Product removed" });
+    res.status(200).send("Product removed");
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
